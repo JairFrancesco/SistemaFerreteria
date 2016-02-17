@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SistemaFerreteriaDataSet7" targetNamespace="http://tempuri.org/SistemaFerreteriaDataSet7.xsd" xmlns:mstns="http://tempuri.org/SistemaFerreteriaDataSet7.xsd" xmlns="http://tempuri.org/SistemaFerreteriaDataSet7.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SistemaFerreteriaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SistemaFerreteriaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SistemaFerreteria_VENTAS_ALMACEN.Properties.Settings.GlobalReference.Default.SistemaFerreteriaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="REPORTEVENTASTableAdapter" GeneratorDataComponentClassName="REPORTEVENTASTableAdapter" Name="REPORTEVENTAS" UserDataComponentName="REPORTEVENTASTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SistemaFerreteriaConnectionString (Settings)" DbObjectName="SistemaFerreteria.dbo.REPORTEVENTAS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT numero_factura, descripcion_producto, precio_producto, cantidad_compra FROM dbo.REPORTEVENTAS</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="numero_factura" DataSetColumn="numero_factura" />
+              <Mapping SourceColumn="descripcion_producto" DataSetColumn="descripcion_producto" />
+              <Mapping SourceColumn="precio_producto" DataSetColumn="precio_producto" />
+              <Mapping SourceColumn="cantidad_compra" DataSetColumn="cantidad_compra" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SistemaFerreteriaDataSet7" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SistemaFerreteriaDataSet7" msprop:Generator_UserDSName="SistemaFerreteriaDataSet7">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="REPORTEVENTAS" msprop:Generator_TableClassName="REPORTEVENTASDataTable" msprop:Generator_TableVarName="tableREPORTEVENTAS" msprop:Generator_TablePropName="REPORTEVENTAS" msprop:Generator_RowDeletingName="REPORTEVENTASRowDeleting" msprop:Generator_RowChangingName="REPORTEVENTASRowChanging" msprop:Generator_RowEvHandlerName="REPORTEVENTASRowChangeEventHandler" msprop:Generator_RowDeletedName="REPORTEVENTASRowDeleted" msprop:Generator_UserTableName="REPORTEVENTAS" msprop:Generator_RowChangedName="REPORTEVENTASRowChanged" msprop:Generator_RowEvArgName="REPORTEVENTASRowChangeEvent" msprop:Generator_RowClassName="REPORTEVENTASRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numero_factura" msprop:Generator_ColumnVarNameInTable="columnnumero_factura" msprop:Generator_ColumnPropNameInRow="numero_factura" msprop:Generator_ColumnPropNameInTable="numero_facturaColumn" msprop:Generator_UserColumnName="numero_factura" type="xs:int" />
+              <xs:element name="descripcion_producto" msprop:Generator_ColumnVarNameInTable="columndescripcion_producto" msprop:Generator_ColumnPropNameInRow="descripcion_producto" msprop:Generator_ColumnPropNameInTable="descripcion_productoColumn" msprop:Generator_UserColumnName="descripcion_producto">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="precio_producto" msprop:Generator_ColumnVarNameInTable="columnprecio_producto" msprop:Generator_ColumnPropNameInRow="precio_producto" msprop:Generator_ColumnPropNameInTable="precio_productoColumn" msprop:Generator_UserColumnName="precio_producto" type="xs:float" />
+              <xs:element name="cantidad_compra" msprop:Generator_ColumnVarNameInTable="columncantidad_compra" msprop:Generator_ColumnPropNameInRow="cantidad_compra" msprop:Generator_ColumnPropNameInTable="cantidad_compraColumn" msprop:Generator_UserColumnName="cantidad_compra" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

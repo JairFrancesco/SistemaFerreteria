@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SistemaFerreteriaModelStoreContainer" CdmEntityContainer="FerreteriaEntities">
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="ID_rol" ColumnName="ID_rol" />
+          <ScalarProperty Name="descripcion_rol" ColumnName="descripcion_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclientes">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tclientes">
+        <MappingFragment StoreEntitySet="tclientes">
+          <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+          <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+          <ScalarProperty Name="apellidos_cliente" ColumnName="apellidos_cliente" />
+          <ScalarProperty Name="nacimiento_cliente" ColumnName="nacimiento_cliente" />
+          <ScalarProperty Name="telefono_cliente" ColumnName="telefono_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tcompras">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tcompras">
+        <MappingFragment StoreEntitySet="tcompras">
+          <ScalarProperty Name="numero_factura" ColumnName="numero_factura" />
+          <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+          <ScalarProperty Name="id_tipopago" ColumnName="id_tipopago" />
+          <ScalarProperty Name="dni_empleado" ColumnName="dni_empleado" />
+          <ScalarProperty Name="fecha_compra" ColumnName="fecha_compra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tdescuentos">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tdescuentos">
+        <MappingFragment StoreEntitySet="tdescuentos">
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="producto_descuento" ColumnName="producto_descuento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tdetallecompras">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tdetallecompras">
+        <MappingFragment StoreEntitySet="tdetallecompras">
+          <ScalarProperty Name="Id_detalleventa" ColumnName="Id_detalleventa" />
+          <ScalarProperty Name="numero_factura" ColumnName="numero_factura" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="cantidad_compra" ColumnName="cantidad_compra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="templeados">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.templeados">
+        <MappingFragment StoreEntitySet="templeados">
+          <ScalarProperty Name="dni_empleado" ColumnName="dni_empleado" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="nombre_empleado" ColumnName="nombre_empleado" />
+          <ScalarProperty Name="apellidos_empleado" ColumnName="apellidos_empleado" />
+          <ScalarProperty Name="nacimiento_empleado" ColumnName="nacimiento_empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tproductos">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tproductos">
+        <MappingFragment StoreEntitySet="tproductos">
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="descripcion_producto" ColumnName="descripcion_producto" />
+          <ScalarProperty Name="precio_producto" ColumnName="precio_producto" />
+          <ScalarProperty Name="existencias_producto" ColumnName="existencias_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tproveedoresempresas">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tproveedoresempresas">
+        <MappingFragment StoreEntitySet="tproveedoresempresas">
+          <ScalarProperty Name="RUC_proveedorempresa" ColumnName="RUC_proveedorempresa" />
+          <ScalarProperty Name="Nombre_proveedorempresa" ColumnName="Nombre_proveedorempresa" />
+          <ScalarProperty Name="telefono_proveedorempresa" ColumnName="telefono_proveedorempresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tproveedoresnaturales">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tproveedoresnaturales">
+        <MappingFragment StoreEntitySet="tproveedoresnaturales">
+          <ScalarProperty Name="dni_proveedor" ColumnName="dni_proveedor" />
+          <ScalarProperty Name="nombre_proveedor" ColumnName="nombre_proveedor" />
+          <ScalarProperty Name="nacimiento_proveedor" ColumnName="nacimiento_proveedor" />
+          <ScalarProperty Name="apellidos_proveedor" ColumnName="apellidos_proveedor" />
+          <ScalarProperty Name="telefono_proveedor" ColumnName="telefono_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tsuministros">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tsuministros">
+        <MappingFragment StoreEntitySet="tsuministros">
+          <ScalarProperty Name="codigo_suministro" ColumnName="codigo_suministro" />
+          <ScalarProperty Name="dni_proveedor" ColumnName="dni_proveedor" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tsuministrosempresas">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tsuministrosempresas">
+        <MappingFragment StoreEntitySet="tsuministrosempresas">
+          <ScalarProperty Name="codigo_suministro" ColumnName="codigo_suministro" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="RUC_proveedorempresa" ColumnName="RUC_proveedorempresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTipopagos">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tTipopagos">
+        <MappingFragment StoreEntitySet="tTipopagos">
+          <ScalarProperty Name="id_tipopago" ColumnName="id_tipopago" />
+          <ScalarProperty Name="nombre_Tipopago" ColumnName="nombre_Tipopago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttipousuarios">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.ttipousuarios">
+        <MappingFragment StoreEntitySet="ttipousuarios">
+          <ScalarProperty Name="Id_TipoUsuario" ColumnName="Id_TipoUsuario" />
+          <ScalarProperty Name="ID_rol" ColumnName="ID_rol" />
+          <ScalarProperty Name="Nombre_TipoUsuario" ColumnName="Nombre_TipoUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tusuarios">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.tusuarios">
+        <MappingFragment StoreEntitySet="tusuarios">
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="Id_TipoUsuario" ColumnName="Id_TipoUsuario" />
+          <ScalarProperty Name="contrasenia_usuario" ColumnName="contrasenia_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTECLIENTES">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.REPORTECLIENTES">
+        <MappingFragment StoreEntitySet="REPORTECLIENTES">
+          <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+          <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+          <ScalarProperty Name="apellidos_cliente" ColumnName="apellidos_cliente" />
+          <ScalarProperty Name="nacimiento_cliente" ColumnName="nacimiento_cliente" />
+          <ScalarProperty Name="telefono_cliente" ColumnName="telefono_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTEVENTAS">
+      <EntityTypeMapping TypeName="SistemaFerreteriaModel.REPORTEVENTAS">
+        <MappingFragment StoreEntitySet="REPORTEVENTAS">
+          <ScalarProperty Name="numero_factura" ColumnName="numero_factura" />
+          <ScalarProperty Name="descripcion_producto" ColumnName="descripcion_producto" />
+          <ScalarProperty Name="precio_producto" ColumnName="precio_producto" />
+          <ScalarProperty Name="cantidad_compra" ColumnName="cantidad_compra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DELETECLIENTE" FunctionName="SistemaFerreteriaModel.Store.DELETECLIENTE" />
+    <FunctionImportMapping FunctionImportName="DELETEPRODUCTO" FunctionName="SistemaFerreteriaModel.Store.DELETEPRODUCTO" />
+    <FunctionImportMapping FunctionImportName="DELETEPROVEEDOR" FunctionName="SistemaFerreteriaModel.Store.DELETEPROVEEDOR" />
+    <FunctionImportMapping FunctionImportName="DELETEPROVEEDOREMPRESA" FunctionName="SistemaFerreteriaModel.Store.DELETEPROVEEDOREMPRESA" />
+    <FunctionImportMapping FunctionImportName="FACTURA" FunctionName="SistemaFerreteriaModel.Store.FACTURA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaFerreteriaModel.FACTURA_Result">
+          <ScalarProperty Name="numero_factura" ColumnName="numero_factura" />
+          <ScalarProperty Name="descripcion_producto" ColumnName="descripcion_producto" />
+          <ScalarProperty Name="precio_producto" ColumnName="precio_producto" />
+          <ScalarProperty Name="cantidad_compra" ColumnName="cantidad_compra" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GUARDARCOMPRAS" FunctionName="SistemaFerreteriaModel.Store.GUARDARCOMPRAS" />
+    <FunctionImportMapping FunctionImportName="GUARDARDETALLES" FunctionName="SistemaFerreteriaModel.Store.GUARDARDETALLES" />
+    <FunctionImportMapping FunctionImportName="IngresarUsuario" FunctionName="SistemaFerreteriaModel.Store.IngresarUsuario" />
+    <FunctionImportMapping FunctionImportName="INSERTCLIENTE" FunctionName="SistemaFerreteriaModel.Store.INSERTCLIENTE" />
+    <FunctionImportMapping FunctionImportName="INSERTPRODUCTO" FunctionName="SistemaFerreteriaModel.Store.INSERTPRODUCTO" />
+    <FunctionImportMapping FunctionImportName="INSERTPROVEEDOR" FunctionName="SistemaFerreteriaModel.Store.INSERTPROVEEDOR" />
+    <FunctionImportMapping FunctionImportName="INSERTPROVEEDOREMPRESA" FunctionName="SistemaFerreteriaModel.Store.INSERTPROVEEDOREMPRESA" />
+    <FunctionImportMapping FunctionImportName="SELECTPRODUCTOS" FunctionName="SistemaFerreteriaModel.Store.SELECTPRODUCTOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaFerreteriaModel.SELECTPRODUCTOS_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SistemaFerreteriaModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SistemaFerreteriaModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SistemaFerreteriaModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SistemaFerreteriaModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaFerreteriaModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SistemaFerreteriaModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaFerreteriaModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SistemaFerreteriaModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SistemaFerreteriaModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="UPDATECLIENTE" FunctionName="SistemaFerreteriaModel.Store.UPDATECLIENTE" />
+    <FunctionImportMapping FunctionImportName="UPDATEPRODUCTO" FunctionName="SistemaFerreteriaModel.Store.UPDATEPRODUCTO" />
+    <FunctionImportMapping FunctionImportName="UPDATEPROVEEDOR" FunctionName="SistemaFerreteriaModel.Store.UPDATEPROVEEDOR" />
+    <FunctionImportMapping FunctionImportName="UPDATEPROVEEDOREMPRESA" FunctionName="SistemaFerreteriaModel.Store.UPDATEPROVEEDOREMPRESA" />
+    <FunctionImportMapping FunctionImportName="VerificarUsuario" FunctionName="SistemaFerreteriaModel.Store.VerificarUsuario" />
+  </EntityContainerMapping>
+</Mapping>

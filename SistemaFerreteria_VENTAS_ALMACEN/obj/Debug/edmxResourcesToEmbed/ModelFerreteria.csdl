@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemaFerreteriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="ID_rol" />
+    </Key>
+    <Property Name="ID_rol" Type="Int32" Nullable="false" />
+    <Property Name="descripcion_rol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ttipousuarios" Relationship="Self.roles_ttipousuarios_fk" FromRole="roles" ToRole="ttipousuarios" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tclientes">
+    <Key>
+      <PropertyRef Name="dni_cliente" />
+    </Key>
+    <Property Name="dni_cliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidos_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nacimiento_cliente" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="telefono_cliente" Type="Int32" />
+    <NavigationProperty Name="tcompras" Relationship="Self.tclientes_tcompras_fk" FromRole="tclientes" ToRole="tcompras" />
+  </EntityType>
+  <EntityType Name="tcompras">
+    <Key>
+      <PropertyRef Name="numero_factura" />
+    </Key>
+    <Property Name="numero_factura" Type="Int32" Nullable="false" />
+    <Property Name="dni_cliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_tipopago" Type="Int32" Nullable="false" />
+    <Property Name="dni_empleado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_compra" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="tclientes" Relationship="Self.tclientes_tcompras_fk" FromRole="tcompras" ToRole="tclientes" />
+    <NavigationProperty Name="tdetallecompras" Relationship="Self.tcompras_tdetallecompras_fk" FromRole="tcompras" ToRole="tdetallecompras" />
+    <NavigationProperty Name="templeados" Relationship="Self.templeados_tcompras_fk" FromRole="tcompras" ToRole="templeados" />
+    <NavigationProperty Name="tTipopagos" Relationship="Self.tTipopagos_tcompras_fk" FromRole="tcompras" ToRole="tTipopagos" />
+  </EntityType>
+  <EntityType Name="tdescuentos">
+    <Key>
+      <PropertyRef Name="codigo_producto" />
+    </Key>
+    <Property Name="codigo_producto" Type="Int32" Nullable="false" />
+    <Property Name="producto_descuento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tproductos" Relationship="Self.tproductos_tdescuentos_fk" FromRole="tdescuentos" ToRole="tproductos" />
+  </EntityType>
+  <EntityType Name="tdetallecompras">
+    <Key>
+      <PropertyRef Name="Id_detalleventa" />
+    </Key>
+    <Property Name="Id_detalleventa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero_factura" Type="Int32" Nullable="false" />
+    <Property Name="codigo_producto" Type="Int32" Nullable="false" />
+    <Property Name="cantidad_compra" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tcompras" Relationship="Self.tcompras_tdetallecompras_fk" FromRole="tdetallecompras" ToRole="tcompras" />
+    <NavigationProperty Name="tproductos" Relationship="Self.tproductos_tdetallecompras_fk" FromRole="tdetallecompras" ToRole="tproductos" />
+  </EntityType>
+  <EntityType Name="templeados">
+    <Key>
+      <PropertyRef Name="dni_empleado" />
+    </Key>
+    <Property Name="dni_empleado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre_usuario" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre_empleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidos_empleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nacimiento_empleado" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="tcompras" Relationship="Self.templeados_tcompras_fk" FromRole="templeados" ToRole="tcompras" />
+    <NavigationProperty Name="tusuarios" Relationship="Self.tusuarios_templeados_fk" FromRole="templeados" ToRole="tusuarios" />
+  </EntityType>
+  <EntityType Name="tproductos">
+    <Key>
+      <PropertyRef Name="codigo_producto" />
+    </Key>
+    <Property Name="codigo_producto" Type="Int32" Nullable="false" />
+    <Property Name="descripcion_producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio_producto" Type="Single" Nullable="false" />
+    <Property Name="existencias_producto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tdescuentos" Relationship="Self.tproductos_tdescuentos_fk" FromRole="tproductos" ToRole="tdescuentos" />
+    <NavigationProperty Name="tdetallecompras" Relationship="Self.tproductos_tdetallecompras_fk" FromRole="tproductos" ToRole="tdetallecompras" />
+    <NavigationProperty Name="tsuministros" Relationship="Self.tproductos_tsuministros_fk" FromRole="tproductos" ToRole="tsuministros" />
+    <NavigationProperty Name="tsuministrosempresas" Relationship="Self.tproductos_tsuministrosempresas_fk" FromRole="tproductos" ToRole="tsuministrosempresas" />
+  </EntityType>
+  <EntityType Name="tproveedoresempresas">
+    <Key>
+      <PropertyRef Name="RUC_proveedorempresa" />
+    </Key>
+    <Property Name="RUC_proveedorempresa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_proveedorempresa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono_proveedorempresa" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tsuministrosempresas" Relationship="Self.tproveedoresempresas_tsuministrosempresas_fk" FromRole="tproveedoresempresas" ToRole="tsuministrosempresas" />
+  </EntityType>
+  <EntityType Name="tproveedoresnaturales">
+    <Key>
+      <PropertyRef Name="dni_proveedor" />
+    </Key>
+    <Property Name="dni_proveedor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre_proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nacimiento_proveedor" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="apellidos_proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono_proveedor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tsuministros" Relationship="Self.tproveedoresnaturales_tsuministros_fk" FromRole="tproveedoresnaturales" ToRole="tsuministros" />
+  </EntityType>
+  <EntityType Name="tsuministros">
+    <Key>
+      <PropertyRef Name="codigo_suministro" />
+    </Key>
+    <Property Name="codigo_suministro" Type="Int32" Nullable="false" />
+    <Property Name="dni_proveedor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codigo_producto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tproductos" Relationship="Self.tproductos_tsuministros_fk" FromRole="tsuministros" ToRole="tproductos" />
+    <NavigationProperty Name="tproveedoresnaturales" Relationship="Self.tproveedoresnaturales_tsuministros_fk" FromRole="tsuministros" ToRole="tproveedoresnaturales" />
+  </EntityType>
+  <EntityType Name="tsuministrosempresas">
+    <Key>
+      <PropertyRef Name="codigo_suministro" />
+    </Key>
+    <Property Name="codigo_suministro" Type="Int32" Nullable="false" />
+    <Property Name="codigo_producto" Type="Int32" Nullable="false" />
+    <Property Name="RUC_proveedorempresa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tproductos" Relationship="Self.tproductos_tsuministrosempresas_fk" FromRole="tsuministrosempresas" ToRole="tproductos" />
+    <NavigationProperty Name="tproveedoresempresas" Relationship="Self.tproveedoresempresas_tsuministrosempresas_fk" FromRole="tsuministrosempresas" ToRole="tproveedoresempresas" />
+  </EntityType>
+  <EntityType Name="tTipopagos">
+    <Key>
+      <PropertyRef Name="id_tipopago" />
+    </Key>
+    <Property Name="id_tipopago" Type="Int32" Nullable="false" />
+    <Property Name="nombre_Tipopago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tcompras" Relationship="Self.tTipopagos_tcompras_fk" FromRole="tTipopagos" ToRole="tcompras" />
+  </EntityType>
+  <EntityType Name="ttipousuarios">
+    <Key>
+      <PropertyRef Name="Id_TipoUsuario" />
+    </Key>
+    <Property Name="Id_TipoUsuario" Type="Int32" Nullable="false" />
+    <Property Name="ID_rol" Type="Int32" Nullable="false" />
+    <Property Name="Nombre_TipoUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="roles" Relationship="Self.roles_ttipousuarios_fk" FromRole="ttipousuarios" ToRole="roles" />
+    <NavigationProperty Name="tusuarios" Relationship="Self.ttipousuarios_tusuarios_fk" FromRole="ttipousuarios" ToRole="tusuarios" />
+  </EntityType>
+  <EntityType Name="tusuarios">
+    <Key>
+      <PropertyRef Name="nombre_usuario" />
+    </Key>
+    <Property Name="nombre_usuario" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_TipoUsuario" Type="Int32" Nullable="false" />
+    <Property Name="contrasenia_usuario" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="templeados" Relationship="Self.tusuarios_templeados_fk" FromRole="tusuarios" ToRole="templeados" />
+    <NavigationProperty Name="ttipousuarios" Relationship="Self.ttipousuarios_tusuarios_fk" FromRole="tusuarios" ToRole="ttipousuarios" />
+  </EntityType>
+  <Association Name="roles_ttipousuarios_fk">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="ttipousuarios" Type="Self.ttipousuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="ID_rol" />
+      </Principal>
+      <Dependent Role="ttipousuarios">
+        <PropertyRef Name="ID_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tclientes_tcompras_fk">
+    <End Role="tclientes" Type="Self.tclientes" Multiplicity="1" />
+    <End Role="tcompras" Type="Self.tcompras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tclientes">
+        <PropertyRef Name="dni_cliente" />
+      </Principal>
+      <Dependent Role="tcompras">
+        <PropertyRef Name="dni_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tcompras_tdetallecompras_fk">
+    <End Role="tcompras" Type="Self.tcompras" Multiplicity="1" />
+    <End Role="tdetallecompras" Type="Self.tdetallecompras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tcompras">
+        <PropertyRef Name="numero_factura" />
+      </Principal>
+      <Dependent Role="tdetallecompras">
+        <PropertyRef Name="numero_factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="templeados_tcompras_fk">
+    <End Role="templeados" Type="Self.templeados" Multiplicity="1" />
+    <End Role="tcompras" Type="Self.tcompras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="templeados">
+        <PropertyRef Name="dni_empleado" />
+      </Principal>
+      <Dependent Role="tcompras">
+        <PropertyRef Name="dni_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tTipopagos_tcompras_fk">
+    <End Role="tTipopagos" Type="Self.tTipopagos" Multiplicity="1" />
+    <End Role="tcompras" Type="Self.tcompras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTipopagos">
+        <PropertyRef Name="id_tipopago" />
+      </Principal>
+      <Dependent Role="tcompras">
+        <PropertyRef Name="id_tipopago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproductos_tdescuentos_fk">
+    <End Role="tproductos" Type="Self.tproductos" Multiplicity="1" />
+    <End Role="tdescuentos" Type="Self.tdescuentos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tproductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="tdescuentos">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproductos_tdetallecompras_fk">
+    <End Role="tproductos" Type="Self.tproductos" Multiplicity="1" />
+    <End Role="tdetallecompras" Type="Self.tdetallecompras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tproductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="tdetallecompras">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tusuarios_templeados_fk">
+    <End Role="tusuarios" Type="Self.tusuarios" Multiplicity="1" />
+    <End Role="templeados" Type="Self.templeados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tusuarios">
+        <PropertyRef Name="nombre_usuario" />
+      </Principal>
+      <Dependent Role="templeados">
+        <PropertyRef Name="nombre_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproductos_tsuministros_fk">
+    <End Role="tproductos" Type="Self.tproductos" Multiplicity="1" />
+    <End Role="tsuministros" Type="Self.tsuministros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tproductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="tsuministros">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproductos_tsuministrosempresas_fk">
+    <End Role="tproductos" Type="Self.tproductos" Multiplicity="1" />
+    <End Role="tsuministrosempresas" Type="Self.tsuministrosempresas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tproductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="tsuministrosempresas">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproveedoresempresas_tsuministrosempresas_fk">
+    <End Role="tproveedoresempresas" Type="Self.tproveedoresempresas" Multiplicity="1" />
+    <End Role="tsuministrosempresas" Type="Self.tsuministrosempresas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tproveedoresempresas">
+        <PropertyRef Name="RUC_proveedorempresa" />
+      </Principal>
+      <Dependent Role="tsuministrosempresas">
+        <PropertyRef Name="RUC_proveedorempresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproveedoresnaturales_tsuministros_fk">
+    <End Role="tproveedoresnaturales" Type="Self.tproveedoresnaturales" Multiplicity="1" />
+    <End Role="tsuministros" Type="Self.tsuministros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tproveedoresnaturales">
+        <PropertyRef Name="dni_proveedor" />
+      </Principal>
+      <Dependent Role="tsuministros">
+        <PropertyRef Name="dni_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ttipousuarios_tusuarios_fk">
+    <End Role="ttipousuarios" Type="Self.ttipousuarios" Multiplicity="1" />
+    <End Role="tusuarios" Type="Self.tusuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ttipousuarios">
+        <PropertyRef Name="Id_TipoUsuario" />
+      </Principal>
+      <Dependent Role="tusuarios">
+        <PropertyRef Name="Id_TipoUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FerreteriaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="roles" EntityType="Self.roles" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tclientes" EntityType="Self.tclientes" />
+    <EntitySet Name="tcompras" EntityType="Self.tcompras" />
+    <EntitySet Name="tdescuentos" EntityType="Self.tdescuentos" />
+    <EntitySet Name="tdetallecompras" EntityType="Self.tdetallecompras" />
+    <EntitySet Name="templeados" EntityType="Self.templeados" />
+    <EntitySet Name="tproductos" EntityType="Self.tproductos" />
+    <EntitySet Name="tproveedoresempresas" EntityType="Self.tproveedoresempresas" />
+    <EntitySet Name="tproveedoresnaturales" EntityType="Self.tproveedoresnaturales" />
+    <EntitySet Name="tsuministros" EntityType="Self.tsuministros" />
+    <EntitySet Name="tsuministrosempresas" EntityType="Self.tsuministrosempresas" />
+    <EntitySet Name="tTipopagos" EntityType="Self.tTipopagos" />
+    <EntitySet Name="ttipousuarios" EntityType="Self.ttipousuarios" />
+    <EntitySet Name="tusuarios" EntityType="Self.tusuarios" />
+    <AssociationSet Name="roles_ttipousuarios_fk" Association="Self.roles_ttipousuarios_fk">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="ttipousuarios" EntitySet="ttipousuarios" />
+    </AssociationSet>
+    <AssociationSet Name="tclientes_tcompras_fk" Association="Self.tclientes_tcompras_fk">
+      <End Role="tclientes" EntitySet="tclientes" />
+      <End Role="tcompras" EntitySet="tcompras" />
+    </AssociationSet>
+    <AssociationSet Name="tcompras_tdetallecompras_fk" Association="Self.tcompras_tdetallecompras_fk">
+      <End Role="tcompras" EntitySet="tcompras" />
+      <End Role="tdetallecompras" EntitySet="tdetallecompras" />
+    </AssociationSet>
+    <AssociationSet Name="templeados_tcompras_fk" Association="Self.templeados_tcompras_fk">
+      <End Role="templeados" EntitySet="templeados" />
+      <End Role="tcompras" EntitySet="tcompras" />
+    </AssociationSet>
+    <AssociationSet Name="tTipopagos_tcompras_fk" Association="Self.tTipopagos_tcompras_fk">
+      <End Role="tTipopagos" EntitySet="tTipopagos" />
+      <End Role="tcompras" EntitySet="tcompras" />
+    </AssociationSet>
+    <AssociationSet Name="tproductos_tdescuentos_fk" Association="Self.tproductos_tdescuentos_fk">
+      <End Role="tproductos" EntitySet="tproductos" />
+      <End Role="tdescuentos" EntitySet="tdescuentos" />
+    </AssociationSet>
+    <AssociationSet Name="tproductos_tdetallecompras_fk" Association="Self.tproductos_tdetallecompras_fk">
+      <End Role="tproductos" EntitySet="tproductos" />
+      <End Role="tdetallecompras" EntitySet="tdetallecompras" />
+    </AssociationSet>
+    <AssociationSet Name="tusuarios_templeados_fk" Association="Self.tusuarios_templeados_fk">
+      <End Role="tusuarios" EntitySet="tusuarios" />
+      <End Role="templeados" EntitySet="templeados" />
+    </AssociationSet>
+    <AssociationSet Name="tproductos_tsuministros_fk" Association="Self.tproductos_tsuministros_fk">
+      <End Role="tproductos" EntitySet="tproductos" />
+      <End Role="tsuministros" EntitySet="tsuministros" />
+    </AssociationSet>
+    <AssociationSet Name="tproductos_tsuministrosempresas_fk" Association="Self.tproductos_tsuministrosempresas_fk">
+      <End Role="tproductos" EntitySet="tproductos" />
+      <End Role="tsuministrosempresas" EntitySet="tsuministrosempresas" />
+    </AssociationSet>
+    <AssociationSet Name="tproveedoresempresas_tsuministrosempresas_fk" Association="Self.tproveedoresempresas_tsuministrosempresas_fk">
+      <End Role="tproveedoresempresas" EntitySet="tproveedoresempresas" />
+      <End Role="tsuministrosempresas" EntitySet="tsuministrosempresas" />
+    </AssociationSet>
+    <AssociationSet Name="tproveedoresnaturales_tsuministros_fk" Association="Self.tproveedoresnaturales_tsuministros_fk">
+      <End Role="tproveedoresnaturales" EntitySet="tproveedoresnaturales" />
+      <End Role="tsuministros" EntitySet="tsuministros" />
+    </AssociationSet>
+    <AssociationSet Name="ttipousuarios_tusuarios_fk" Association="Self.ttipousuarios_tusuarios_fk">
+      <End Role="ttipousuarios" EntitySet="ttipousuarios" />
+      <End Role="tusuarios" EntitySet="tusuarios" />
+    </AssociationSet>
+    <FunctionImport Name="IngresarUsuario">
+      <Parameter Name="nombre_usuario" Type="String" Mode="In" />
+      <Parameter Name="tipo_usuario" Type="Int32" Mode="In" />
+      <Parameter Name="contrasenia_usuario" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="INSERTCLIENTE">
+      <Parameter Name="dni_cliente" Type="Int32" Mode="In" />
+      <Parameter Name="nombre_cliente" Type="String" Mode="In" />
+      <Parameter Name="apellidos_cliente" Type="String" Mode="In" />
+      <Parameter Name="nacimiento_cliente" Type="DateTime" Mode="In" />
+      <Parameter Name="telefono_cliente" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Type="String" Mode="In" />
+      <Parameter Name="owner_id" Type="Int32" Mode="In" />
+      <Parameter Name="version" Type="Int32" Mode="In" />
+      <Parameter Name="definition" Type="Binary" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Type="String" Mode="In" />
+      <Parameter Name="owner_id" Type="Int32" Mode="In" />
+      <Parameter Name="version" Type="Int32" Mode="In" />
+      <Parameter Name="definition" Type="Binary" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Type="String" Mode="In" />
+      <Parameter Name="owner_id" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SistemaFerreteriaModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Type="String" Mode="In" />
+      <Parameter Name="owner_id" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SistemaFerreteriaModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Type="String" Mode="In" />
+      <Parameter Name="owner_id" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Type="String" Mode="In" />
+      <Parameter Name="owner_id" Type="Int32" Mode="In" />
+      <Parameter Name="new_diagramname" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="VerificarUsuario" ReturnType="Collection(Int32)">
+      <Parameter Name="Nombre_usuario" Type="String" Mode="In" />
+      <Parameter Name="Contrasenia_usuario" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="DELETECLIENTE">
+      <Parameter Name="DNI_CLIENTE" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATECLIENTE">
+      <Parameter Name="dni_cliente" Type="Int32" Mode="In" />
+      <Parameter Name="nombre_cliente" Type="String" Mode="In" />
+      <Parameter Name="apellidos_cliente" Type="String" Mode="In" />
+      <Parameter Name="nacimiento_cliente" Type="DateTime" Mode="In" />
+      <Parameter Name="telefono_cliente" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="DELETEPRODUCTO">
+      <Parameter Name="CODIGO_PRODUCTO" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="INSERTPRODUCTO">
+      <Parameter Name="CODIGO_PRODUCTO" Type="Int32" Mode="In" />
+      <Parameter Name="DESCRIPCION_PRODUCTO" Type="String" Mode="In" />
+      <Parameter Name="PRECIO_PRODUCTO" Type="Single" Mode="In" />
+      <Parameter Name="EXISTENCIAS_PRODUCTO" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATEPRODUCTO">
+      <Parameter Name="CODIGO_PRODUCTO" Type="Int32" Mode="In" />
+      <Parameter Name="DESCRIPCION_PRODUCTO" Type="String" Mode="In" />
+      <Parameter Name="PRECIO_PRODUCTO" Type="Single" Mode="In" />
+      <Parameter Name="EXISTENCIAS_PRODUCTO" Type="Int32" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="SELECTPRODUCTOS" ReturnType="Collection(SistemaFerreteriaModel.SELECTPRODUCTOS_Result)">
+      <Parameter Name="descripcion" Type="String" Mode="In" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SELECTPRODUCTOS_Result">
+    <Property Type="Int32" Name="Codigo" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+    <Property Type="Single" Name="Precio" Nullable="false" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+  </ComplexType>
+</Schema>

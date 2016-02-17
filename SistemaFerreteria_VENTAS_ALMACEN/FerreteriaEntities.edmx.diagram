@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="322b64c88f4f40af824ace7731f968fc" Name="Diagram1">
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.roles" Width="1.5" PointX="1.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tclientes" Width="1.5" PointX="1.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tcompras" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tdescuentos" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tdetallecompras" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.templeados" Width="1.5" PointX="1.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tproductos" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tproveedoresempresas" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tproveedoresnaturales" Width="1.5" PointX="0.75" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tsuministros" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tsuministrosempresas" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tTipopagos" Width="1.5" PointX="1.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.ttipousuarios" Width="1.5" PointX="1.5" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.tusuarios" Width="1.5" PointX="1.5" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.REPORTECLIENTES" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaFerreteriaModel.REPORTEVENTAS" Width="1.5" PointX="8.75" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="SistemaFerreteriaModel.roles_ttipousuarios_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tclientes_tcompras_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tcompras_tdetallecompras_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.templeados_tcompras_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tTipopagos_tcompras_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tproductos_tdescuentos_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tproductos_tdetallecompras_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tusuarios_templeados_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tproductos_tsuministros_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tproductos_tsuministrosempresas_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tproveedoresempresas_tsuministrosempresas_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.tproveedoresnaturales_tsuministros_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaFerreteriaModel.ttipousuarios_tusuarios_fk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="SistemaFerreteriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="ID_rol" />
+    </Key>
+    <Property Name="ID_rol" Nullable="false" Type="int" />
+    <Property Name="descripcion_rol" Nullable="false" MaxLength="100" Type="varchar" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Nullable="false" MaxLength="128" Type="nvarchar" />
+    <Property Name="principal_id" Nullable="false" Type="int" />
+    <Property Name="diagram_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tclientes">
+    <Key>
+      <PropertyRef Name="dni_cliente" />
+    </Key>
+    <Property Name="dni_cliente" Nullable="false" MaxLength="20" Type="varchar" />
+    <Property Name="nombre_cliente" Nullable="false" MaxLength="50" Type="varchar" />
+    <Property Name="apellidos_cliente" Nullable="false" MaxLength="50" Type="varchar" />
+    <Property Name="nacimiento_cliente" Nullable="false" Type="datetime" />
+    <Property Name="telefono_cliente" Type="int" />
+  </EntityType>
+  <EntityType Name="tcompras">
+    <Key>
+      <PropertyRef Name="numero_factura" />
+    </Key>
+    <Property Name="numero_factura" Nullable="false" Type="int" />
+    <Property Name="dni_cliente" Nullable="false" MaxLength="20" Type="varchar" />
+    <Property Name="id_tipopago" Nullable="false" Type="int" />
+    <Property Name="dni_empleado" Nullable="false" MaxLength="20" Type="varchar" />
+    <Property Name="fecha_compra" Nullable="false" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tdescuentos">
+    <Key>
+      <PropertyRef Name="codigo_producto" />
+    </Key>
+    <Property Name="codigo_producto" Nullable="false" Type="int" />
+    <Property Name="producto_descuento" Nullable="false" Type="int" />
+  </EntityType>
+  <EntityType Name="tdetallecompras">
+    <Key>
+      <PropertyRef Name="Id_detalleventa" />
+    </Key>
+    <Property Name="Id_detalleventa" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="numero_factura" Nullable="false" Type="int" />
+    <Property Name="codigo_producto" Nullable="false" Type="int" />
+    <Property Name="cantidad_compra" Nullable="false" Type="int" />
+  </EntityType>
+  <EntityType Name="templeados">
+    <Key>
+      <PropertyRef Name="dni_empleado" />
+    </Key>
+    <Property Name="dni_empleado" Nullable="false" MaxLength="20" Type="varchar" />
+    <Property Name="nombre_usuario" Nullable="false" MaxLength="25" Type="varchar" />
+    <Property Name="nombre_empleado" Nullable="false" MaxLength="30" Type="varchar" />
+    <Property Name="apellidos_empleado" Nullable="false" MaxLength="30" Type="varchar" />
+    <Property Name="nacimiento_empleado" Nullable="false" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tproductos">
+    <Key>
+      <PropertyRef Name="codigo_producto" />
+    </Key>
+    <Property Name="codigo_producto" Nullable="false" Type="int" />
+    <Property Name="descripcion_producto" Nullable="false" MaxLength="100" Type="varchar" />
+    <Property Name="precio_producto" Nullable="false" Type="real" />
+    <Property Name="existencias_producto" Nullable="false" Type="int" />
+  </EntityType>
+  <EntityType Name="tproveedoresempresas">
+    <Key>
+      <PropertyRef Name="RUC_proveedorempresa" />
+    </Key>
+    <Property Name="RUC_proveedorempresa" Nullable="false" MaxLength="20" Type="varchar" />
+    <Property Name="Nombre_proveedorempresa" Nullable="false" MaxLength="20" Type="varchar" />
+    <Property Name="telefono_proveedorempresa" Nullable="false" MaxLength="25" Type="varchar" />
+  </EntityType>
+  <EntityType Name="tproveedoresnaturales">
+    <Key>
+      <PropertyRef Name="dni_proveedor" />
+    </Key>
+    <Property Name="dni_proveedor" Nullable="false" MaxLength="20" Type="varchar" />
+    <Property Name="nombre_proveedor" Nullable="false" MaxLength="50" Type="varchar" />
+    <Property Name="nacimiento_proveedor" Nullable="false" Type="datetime" />
+    <Property Name="apellidos_proveedor" Nullable="false" MaxLength="50" Type="varchar" />
+    <Property Name="telefono_proveedor" Nullable="false" Type="int" />
+  </EntityType>
+  <EntityType Name="tsuministros">
+    <Key>
+      <PropertyRef Name="codigo_suministro" />
+    </Key>
+    <Property Name="codigo_suministro" Nullable="false" Type="int" />
+    <Property Name="dni_proveedor" Nullable="false" MaxLength="20" Type="varchar" />
+    <Property Name="codigo_producto" Nullable="false" Type="int" />
+  </EntityType>
+  <EntityType Name="tsuministrosempresas">
+    <Key>
+      <PropertyRef Name="codigo_suministro" />
+    </Key>
+    <Property Name="codigo_suministro" Nullable="false" Type="int" />
+    <Property Name="codigo_producto" Nullable="false" Type="int" />
+    <Property Name="RUC_proveedorempresa" Nullable="false" MaxLength="20" Type="varchar" />
+  </EntityType>
+  <EntityType Name="tTipopagos">
+    <Key>
+      <PropertyRef Name="id_tipopago" />
+    </Key>
+    <Property Name="id_tipopago" Nullable="false" Type="int" />
+    <Property Name="nombre_Tipopago" Nullable="false" MaxLength="50" Type="varchar" />
+  </EntityType>
+  <EntityType Name="ttipousuarios">
+    <Key>
+      <PropertyRef Name="Id_TipoUsuario" />
+    </Key>
+    <Property Name="Id_TipoUsuario" Nullable="false" Type="int" />
+    <Property Name="ID_rol" Nullable="false" Type="int" />
+    <Property Name="Nombre_TipoUsuario" Nullable="false" MaxLength="20" Type="varchar" />
+  </EntityType>
+  <EntityType Name="tusuarios">
+    <Key>
+      <PropertyRef Name="nombre_usuario" />
+    </Key>
+    <Property Name="nombre_usuario" Nullable="false" MaxLength="25" Type="varchar" />
+    <Property Name="Id_TipoUsuario" Nullable="false" Type="int" />
+    <Property Name="contrasenia_usuario" Nullable="false" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="roles_ttipousuarios_fk">
+    <End Type="Self.roles" Multiplicity="1" Role="roles" />
+    <End Type="Self.ttipousuarios" Multiplicity="*" Role="ttipousuarios" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="ID_rol" />
+      </Principal>
+      <Dependent Role="ttipousuarios">
+        <PropertyRef Name="ID_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tclientes_tcompras_fk">
+    <End Type="Self.tclientes" Multiplicity="1" Role="tclientes" />
+    <End Type="Self.tcompras" Multiplicity="*" Role="tcompras" />
+    <ReferentialConstraint>
+      <Principal Role="tclientes">
+        <PropertyRef Name="dni_cliente" />
+      </Principal>
+      <Dependent Role="tcompras">
+        <PropertyRef Name="dni_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tcompras_tdetallecompras_fk">
+    <End Type="Self.tcompras" Multiplicity="1" Role="tcompras" />
+    <End Type="Self.tdetallecompras" Multiplicity="*" Role="tdetallecompras" />
+    <ReferentialConstraint>
+      <Principal Role="tcompras">
+        <PropertyRef Name="numero_factura" />
+      </Principal>
+      <Dependent Role="tdetallecompras">
+        <PropertyRef Name="numero_factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="templeados_tcompras_fk">
+    <End Type="Self.templeados" Multiplicity="1" Role="templeados" />
+    <End Type="Self.tcompras" Multiplicity="*" Role="tcompras" />
+    <ReferentialConstraint>
+      <Principal Role="templeados">
+        <PropertyRef Name="dni_empleado" />
+      </Principal>
+      <Dependent Role="tcompras">
+        <PropertyRef Name="dni_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproductos_tdescuentos_fk">
+    <End Type="Self.tproductos" Multiplicity="1" Role="tproductos" />
+    <End Type="Self.tdescuentos" Multiplicity="0..1" Role="tdescuentos" />
+    <ReferentialConstraint>
+      <Principal Role="tproductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="tdescuentos">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproductos_tdetallecompras_fk">
+    <End Type="Self.tproductos" Multiplicity="1" Role="tproductos" />
+    <End Type="Self.tdetallecompras" Multiplicity="*" Role="tdetallecompras" />
+    <ReferentialConstraint>
+      <Principal Role="tproductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="tdetallecompras">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproductos_tsuministros_fk">
+    <End Type="Self.tproductos" Multiplicity="1" Role="tproductos" />
+    <End Type="Self.tsuministros" Multiplicity="*" Role="tsuministros" />
+    <ReferentialConstraint>
+      <Principal Role="tproductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="tsuministros">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproductos_tsuministrosempresas_fk">
+    <End Type="Self.tproductos" Multiplicity="1" Role="tproductos" />
+    <End Type="Self.tsuministrosempresas" Multiplicity="*" Role="tsuministrosempresas" />
+    <ReferentialConstraint>
+      <Principal Role="tproductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="tsuministrosempresas">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproveedoresempresas_tsuministrosempresas_fk">
+    <End Type="Self.tproveedoresempresas" Multiplicity="1" Role="tproveedoresempresas" />
+    <End Type="Self.tsuministrosempresas" Multiplicity="*" Role="tsuministrosempresas" />
+    <ReferentialConstraint>
+      <Principal Role="tproveedoresempresas">
+        <PropertyRef Name="RUC_proveedorempresa" />
+      </Principal>
+      <Dependent Role="tsuministrosempresas">
+        <PropertyRef Name="RUC_proveedorempresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tproveedoresnaturales_tsuministros_fk">
+    <End Type="Self.tproveedoresnaturales" Multiplicity="1" Role="tproveedoresnaturales" />
+    <End Type="Self.tsuministros" Multiplicity="*" Role="tsuministros" />
+    <ReferentialConstraint>
+      <Principal Role="tproveedoresnaturales">
+        <PropertyRef Name="dni_proveedor" />
+      </Principal>
+      <Dependent Role="tsuministros">
+        <PropertyRef Name="dni_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tTipopagos_tcompras_fk">
+    <End Type="Self.tTipopagos" Multiplicity="1" Role="tTipopagos" />
+    <End Type="Self.tcompras" Multiplicity="*" Role="tcompras" />
+    <ReferentialConstraint>
+      <Principal Role="tTipopagos">
+        <PropertyRef Name="id_tipopago" />
+      </Principal>
+      <Dependent Role="tcompras">
+        <PropertyRef Name="id_tipopago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ttipousuarios_tusuarios_fk">
+    <End Type="Self.ttipousuarios" Multiplicity="1" Role="ttipousuarios" />
+    <End Type="Self.tusuarios" Multiplicity="*" Role="tusuarios" />
+    <ReferentialConstraint>
+      <Principal Role="ttipousuarios">
+        <PropertyRef Name="Id_TipoUsuario" />
+      </Principal>
+      <Dependent Role="tusuarios">
+        <PropertyRef Name="Id_TipoUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tusuarios_templeados_fk">
+    <End Type="Self.tusuarios" Multiplicity="1" Role="tusuarios" />
+    <End Type="Self.templeados" Multiplicity="*" Role="templeados" />
+    <ReferentialConstraint>
+      <Principal Role="tusuarios">
+        <PropertyRef Name="nombre_usuario" />
+      </Principal>
+      <Dependent Role="templeados">
+        <PropertyRef Name="nombre_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DELETECLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DNI_CLIENTE" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DELETEPRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CODIGO_PRODUCTO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="IngresarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre_usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="tipo_usuario" Type="int" Mode="In" />
+    <Parameter Name="contrasenia_usuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="INSERTCLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dni_cliente" Type="int" Mode="In" />
+    <Parameter Name="nombre_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="apellidos_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="nacimiento_cliente" Type="date" Mode="In" />
+    <Parameter Name="telefono_cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="INSERTPRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CODIGO_PRODUCTO" Type="int" Mode="In" />
+    <Parameter Name="DESCRIPCION_PRODUCTO" Type="varchar" Mode="In" />
+    <Parameter Name="PRECIO_PRODUCTO" Type="real" Mode="In" />
+    <Parameter Name="EXISTENCIAS_PRODUCTO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SELECTPRODUCTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UPDATECLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dni_cliente" Type="int" Mode="In" />
+    <Parameter Name="nombre_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="apellidos_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="nacimiento_cliente" Type="date" Mode="In" />
+    <Parameter Name="telefono_cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UPDATEPRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CODIGO_PRODUCTO" Type="int" Mode="In" />
+    <Parameter Name="DESCRIPCION_PRODUCTO" Type="varchar" Mode="In" />
+    <Parameter Name="PRECIO_PRODUCTO" Type="real" Mode="In" />
+    <Parameter Name="EXISTENCIAS_PRODUCTO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="VerificarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre_usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="Contrasenia_usuario" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="SistemaFerreteriaModelStoreContainer">
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tclientes" EntityType="Self.tclientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tcompras" EntityType="Self.tcompras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tdescuentos" EntityType="Self.tdescuentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tdetallecompras" EntityType="Self.tdetallecompras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="templeados" EntityType="Self.templeados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tproductos" EntityType="Self.tproductos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tproveedoresempresas" EntityType="Self.tproveedoresempresas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tproveedoresnaturales" EntityType="Self.tproveedoresnaturales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tsuministros" EntityType="Self.tsuministros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tsuministrosempresas" EntityType="Self.tsuministrosempresas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tTipopagos" EntityType="Self.tTipopagos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ttipousuarios" EntityType="Self.ttipousuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tusuarios" EntityType="Self.tusuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="roles_ttipousuarios_fk" Association="Self.roles_ttipousuarios_fk">
+      <End EntitySet="roles" Role="roles" />
+      <End EntitySet="ttipousuarios" Role="ttipousuarios" />
+    </AssociationSet>
+    <AssociationSet Name="tclientes_tcompras_fk" Association="Self.tclientes_tcompras_fk">
+      <End EntitySet="tclientes" Role="tclientes" />
+      <End EntitySet="tcompras" Role="tcompras" />
+    </AssociationSet>
+    <AssociationSet Name="tcompras_tdetallecompras_fk" Association="Self.tcompras_tdetallecompras_fk">
+      <End EntitySet="tcompras" Role="tcompras" />
+      <End EntitySet="tdetallecompras" Role="tdetallecompras" />
+    </AssociationSet>
+    <AssociationSet Name="templeados_tcompras_fk" Association="Self.templeados_tcompras_fk">
+      <End EntitySet="templeados" Role="templeados" />
+      <End EntitySet="tcompras" Role="tcompras" />
+    </AssociationSet>
+    <AssociationSet Name="tproductos_tdescuentos_fk" Association="Self.tproductos_tdescuentos_fk">
+      <End EntitySet="tproductos" Role="tproductos" />
+      <End EntitySet="tdescuentos" Role="tdescuentos" />
+    </AssociationSet>
+    <AssociationSet Name="tproductos_tdetallecompras_fk" Association="Self.tproductos_tdetallecompras_fk">
+      <End EntitySet="tproductos" Role="tproductos" />
+      <End EntitySet="tdetallecompras" Role="tdetallecompras" />
+    </AssociationSet>
+    <AssociationSet Name="tproductos_tsuministros_fk" Association="Self.tproductos_tsuministros_fk">
+      <End EntitySet="tproductos" Role="tproductos" />
+      <End EntitySet="tsuministros" Role="tsuministros" />
+    </AssociationSet>
+    <AssociationSet Name="tproductos_tsuministrosempresas_fk" Association="Self.tproductos_tsuministrosempresas_fk">
+      <End EntitySet="tproductos" Role="tproductos" />
+      <End EntitySet="tsuministrosempresas" Role="tsuministrosempresas" />
+    </AssociationSet>
+    <AssociationSet Name="tproveedoresempresas_tsuministrosempresas_fk" Association="Self.tproveedoresempresas_tsuministrosempresas_fk">
+      <End EntitySet="tproveedoresempresas" Role="tproveedoresempresas" />
+      <End EntitySet="tsuministrosempresas" Role="tsuministrosempresas" />
+    </AssociationSet>
+    <AssociationSet Name="tproveedoresnaturales_tsuministros_fk" Association="Self.tproveedoresnaturales_tsuministros_fk">
+      <End EntitySet="tproveedoresnaturales" Role="tproveedoresnaturales" />
+      <End EntitySet="tsuministros" Role="tsuministros" />
+    </AssociationSet>
+    <AssociationSet Name="tTipopagos_tcompras_fk" Association="Self.tTipopagos_tcompras_fk">
+      <End EntitySet="tTipopagos" Role="tTipopagos" />
+      <End EntitySet="tcompras" Role="tcompras" />
+    </AssociationSet>
+    <AssociationSet Name="ttipousuarios_tusuarios_fk" Association="Self.ttipousuarios_tusuarios_fk">
+      <End EntitySet="ttipousuarios" Role="ttipousuarios" />
+      <End EntitySet="tusuarios" Role="tusuarios" />
+    </AssociationSet>
+    <AssociationSet Name="tusuarios_templeados_fk" Association="Self.tusuarios_templeados_fk">
+      <End EntitySet="tusuarios" Role="tusuarios" />
+      <End EntitySet="templeados" Role="templeados" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

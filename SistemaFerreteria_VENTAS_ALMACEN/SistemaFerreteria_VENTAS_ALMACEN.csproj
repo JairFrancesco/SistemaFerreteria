@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B74B002-9A9D-4918-B401-B21F7C36F683}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SistemaFerreteria_VENTAS_ALMACEN</RootNamespace>
+    <AssemblyName>SistemaFerreteria_VENTAS_ALMACEN</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Datos\ConexionBaseDatos.cs" />
+    <Compile Include="Datos\Usuario.cs" />
+    <Compile Include="EmpresasDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpresasDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FacturaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FACTURA_Result.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FerreteriaEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FerreteriaEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FerreteriaEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FerreteriaEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FerreteriaEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FormProductosCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProductosCompra.Designer.cs">
+      <DependentUpon>FormProductosCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmisionFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmisionFactura.Designer.cs">
+      <DependentUpon>FormEmisionFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInsertProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertProducto.Designer.cs">
+      <DependentUpon>FormInsertProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInsertProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertProveedor.Designer.cs">
+      <DependentUpon>FormInsertProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInsertTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertTrabajador.Designer.cs">
+      <DependentUpon>FormInsertTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInsertUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertUsuario.Designer.cs">
+      <DependentUpon>FormInsertUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRegistroCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegistroCompra.Designer.cs">
+      <DependentUpon>FormRegistroCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRegistroSuministro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegistroSuministro.Designer.cs">
+      <DependentUpon>FormRegistroSuministro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReporteClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReporteClientes.Designer.cs">
+      <DependentUpon>FormReporteClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReporteVentas.Designer.cs">
+      <DependentUpon>FormReporteVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSelectProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectProductos.Designer.cs">
+      <DependentUpon>FormSelectProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSistemaAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSistemaAlmacen.Designer.cs">
+      <DependentUpon>FormSistemaAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSistemaVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSistemaVendedor.Designer.cs">
+      <DependentUpon>FormSistemaVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStockProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStockProductos.Designer.cs">
+      <DependentUpon>FormStockProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateTrabajador.Designer.cs">
+      <DependentUpon>FormUpdateTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateUsuario.Designer.cs">
+      <DependentUpon>FormUpdateUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDISistemaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDISistemaAdmin.Designer.cs">
+      <DependentUpon>MDISistemaAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductosDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductosDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormInsertCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertCliente.Designer.cs">
+      <DependentUpon>FormInsertCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProveedorEmpresasDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProveedorEmpresasDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTECLIENTES.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTEVENTAS.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="roles.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SELECTPRODUCTOS_Result.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFerreteriaDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFerreteriaDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tclientes.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tcompras.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tdescuentos.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tdetallecompras.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="templeados.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPagoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TipoPagoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TipoUsuarioDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TipoUsuarioDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="tproductos.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tproveedoresempresas.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tproveedoresnaturales.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tsuministros.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tsuministrosempresas.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tTipopagos.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ttipousuarios.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tusuarios.cs">
+      <DependentUpon>FerreteriaEntities.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormEmisionFactura.resx">
+      <DependentUpon>FormEmisionFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInsertUsuario.resx">
+      <DependentUpon>FormInsertUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProductosCompra.resx">
+      <DependentUpon>FormProductosCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInsertProducto.resx">
+      <DependentUpon>FormInsertProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInsertProveedor.resx">
+      <DependentUpon>FormInsertProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistroCompra.resx">
+      <DependentUpon>FormRegistroCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistroSuministro.resx">
+      <DependentUpon>FormRegistroSuministro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReporteClientes.resx">
+      <DependentUpon>FormReporteClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReporteVentas.resx">
+      <DependentUpon>FormReporteVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectProductos.resx">
+      <DependentUpon>FormSelectProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSistemaAlmacen.resx">
+      <DependentUpon>FormSistemaAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSistemaVendedor.resx">
+      <DependentUpon>FormSistemaVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStockProductos.resx">
+      <DependentUpon>FormStockProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDISistemaAdmin.resx">
+      <DependentUpon>MDISistemaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="FormInsertCliente.resx">
+      <DependentUpon>FormInsertCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteClientes.rdlc" />
+    <EmbeddedResource Include="ReporteFactura.rdlc" />
+    <EmbeddedResource Include="ReporteProductos.rdlc" />
+    <EmbeddedResource Include="ReporteVentas.rdlc" />
+    <None Include="EmpresasDataSet.xsc">
+      <DependentUpon>EmpresasDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EmpresasDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EmpresasDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EmpresasDataSet.xss">
+      <DependentUpon>EmpresasDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FacturaDataSet.xsc">
+      <DependentUpon>FacturaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FacturaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FacturaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FacturaDataSet.xss">
+      <DependentUpon>FacturaDataSet.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="FerreteriaEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FerreteriaEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FerreteriaEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FerreteriaEntities.edmx</DependentUpon>
+      <LastGenOutput>FerreteriaEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="FerreteriaEntities.edmx.diagram">
+      <DependentUpon>FerreteriaEntities.edmx</DependentUpon>
+    </None>
+    <None Include="FerreteriaEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FerreteriaEntities.edmx</DependentUpon>
+      <LastGenOutput>FerreteriaEntities.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="ProductosDataSet.xsc">
+      <DependentUpon>ProductosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProductosDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductosDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProductosDataSet.xss">
+      <DependentUpon>ProductosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProductsDataSet.xsc">
+      <DependentUpon>ProductsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProductsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProductsDataSet.xss">
+      <DependentUpon>ProductsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="ProveedorEmpresasDataSet.xsc">
+      <DependentUpon>ProveedorEmpresasDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProveedorEmpresasDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProveedorEmpresasDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProveedorEmpresasDataSet.xss">
+      <DependentUpon>ProveedorEmpresasDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet.xss">
+      <DependentUpon>SistemaFerreteriaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet1.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet1.xss">
+      <DependentUpon>SistemaFerreteriaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet2.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet2.xss">
+      <DependentUpon>SistemaFerreteriaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet3.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet3.xss">
+      <DependentUpon>SistemaFerreteriaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet4.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet4.xss">
+      <DependentUpon>SistemaFerreteriaDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet5.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet5.xss">
+      <DependentUpon>SistemaFerreteriaDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet6.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet6.xss">
+      <DependentUpon>SistemaFerreteriaDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet7.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet7.xss">
+      <DependentUpon>SistemaFerreteriaDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet8.xsc">
+      <DependentUpon>SistemaFerreteriaDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaFerreteriaDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaFerreteriaDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaFerreteriaDataSet8.xss">
+      <DependentUpon>SistemaFerreteriaDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="TipoPagoDataSet.xsc">
+      <DependentUpon>TipoPagoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TipoPagoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TipoPagoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TipoPagoDataSet.xss">
+      <DependentUpon>TipoPagoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TipoUsuarioDataSet.xsc">
+      <DependentUpon>TipoUsuarioDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TipoUsuarioDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TipoUsuarioDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TipoUsuarioDataSet.xss">
+      <DependentUpon>TipoUsuarioDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginRed.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo-verde-brillante-5050.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fondo-color-verde-688051.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fondo-color-verde-6880511.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\descuentos_pymes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323561_213109.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondos-verdes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398322913_211650.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398322999_211775.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323007_211814.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323122_211934.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323196_211700.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323207_211729.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323214_211731.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323260_211608.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323265_211610.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398323561_2131091.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398324503_174782.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398324875_175007.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398324909_175432.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1398325030_175325.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_carrito-011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slideshow3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\como-elegir-proveedores-cafeteria.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clientes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clientes1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Compras.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AgregarProducto.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
